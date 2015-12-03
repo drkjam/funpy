@@ -49,13 +49,19 @@ def all(xs):
     if not xs:
         return True
     else:
-        return and_(head(xs), all(tail(xs)))
+        x = head(xs)
+        if not x:
+            return False
+        return and_(x, all(tail(xs)))
 
 def any(xs):
     if not xs:
         return False
     else:
-        return or_(head(xs), any(tail(xs)))
+        x = head(xs)
+        if x:
+            return True
+        return or_(x, any(tail(xs)))
 
 __all__ = ['length', 'sum', 'product', 'reverse', 'map', 'reduce', 'filter', 'all', 'any']
 
