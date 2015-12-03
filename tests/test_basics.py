@@ -10,6 +10,7 @@ def test_head():
     with pytest.raises(EmptyListError):
         head([])
 
+
 def test_tail():
     assert tail([1]) == []
     assert tail([1,2]) == [2]
