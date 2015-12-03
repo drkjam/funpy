@@ -1,6 +1,6 @@
 import pytest
 
-from funpy.basics import head, tail, EmptyListError
+from funpy.basics import head, tail, EmptyListError, cons, null
 
 
 def test_head():
@@ -18,3 +18,20 @@ def test_tail():
 
     with pytest.raises(EmptyListError):
         tail([])
+
+
+def test_cons():
+    assert cons(1, []) == [1]
+    assert cons(1, cons(2, [])) == [1,2]
+    assert cons(1, cons(2, cons(3, []))) == [1,2,3]
+    assert cons([], []) == [[]]
+
+    with pytest.raises(TypeError):
+        assert cons([], 1)
+
+
+def test_null():
+    assert null([])
+    assert not null([1])
+    assert not null([1, 2])
+    assert not null([1, 2, 3])

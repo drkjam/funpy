@@ -3,20 +3,26 @@
 class EmptyListError(Exception):
     """An empty list was encountered where it was not expected."""
 
+
 def head(xs):
     if len(xs) < 1:
         raise EmptyListError('empty list')
     return xs[0]
+
 
 def tail(xs):
     if len(xs) < 1:
         raise EmptyListError('empty list')
     return xs[1:]
 
+
 def cons(x, xs):
-    if hasattr(x, '__iter__'):
-        raise Exception('first argument must be scalar!')
     return [x] + xs
 
-__all__ = ['head', 'tail', 'cons']
+
+def null(xs):
+    return len(xs) == 0
+
+
+__all__ = ['head', 'tail', 'cons', 'null']
 
